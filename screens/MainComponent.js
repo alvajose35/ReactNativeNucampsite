@@ -5,6 +5,8 @@ import DirectoryScreen from "./DirectoryScreen";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import HomeScreen from "./HomeScreen";
+import AboutScreen from "./AboutScreen";
+import ContactScreen from "./ContactScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -12,6 +14,32 @@ const screenOptions = {
 	headerTintColor: '#fff',
 	headerStyle: { backgroundColor: '#5637DD' }
 }
+
+const ContactNavigator = () => {
+	const Stack = createStackNavigator();
+	return (
+		<Stack.Navigator screenOptions={screenOptions} >
+			<Stack.Screen
+				name='Contact'
+				component={ContactScreen}
+				options={{ title: 'Contact Us' }}
+			/>
+		</Stack.Navigator>
+	);
+};
+
+const AboutNavigator = () => {
+	const Stack = createStackNavigator();
+	return (
+		<Stack.Navigator screenOptions={screenOptions} >
+			<Stack.Screen
+				name='About'
+				component={AboutScreen}
+				// options={{ title: 'About' }} // Omitted since the title will by default be set to whatever the name prop is set to
+			/>
+		</Stack.Navigator>
+	);
+};
 
 const HomeNavigator = () => {
 	const Stack = createStackNavigator();
@@ -59,7 +87,7 @@ const Main = () => {
 		>
 			<Drawer.Navigator
 				initialRouteName="Home"
-				drawerStyle={{ backgroundColor: '#CEC8FF' }}
+				drawerStyle={{ backgroundColor: '#CEC8FF' }} // This feature is not working on our apps
 			>
 				<Drawer.Screen
 					name='Home'
@@ -70,6 +98,16 @@ const Main = () => {
 					name='Directory'
 					component={DirectoryNavigator}
 					options={{ title: 'Directory' }}
+				/>
+				<Drawer.Screen
+					name='About'
+					component={AboutNavigator}
+					// options={{ title: 'About' }} // Omitted since the title will by default be set to whatever the name prop is set to
+				/>
+				<Drawer.Screen
+					name='Contact'
+					component={ContactNavigator}
+					options={{ title: 'Contact Us' }}
 				/>
 			</Drawer.Navigator>
 		</View>
