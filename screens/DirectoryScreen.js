@@ -27,7 +27,7 @@ const DirectoryScreen = ({ navigation }) => {
 		return (
 			<Tile
 				title={campsite.name}
-				caption={campsite.despcription}
+				caption={campsite.description}
 				featured
 				onPress={() => 
 					navigation.navigate('CampsiteInfo', { campsite })
