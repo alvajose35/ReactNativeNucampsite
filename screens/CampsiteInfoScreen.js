@@ -2,6 +2,7 @@ import { Button, FlatList, Modal, StyleSheet, Text, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import RenderCampsite from "../features/campsites/RenderCampsite";
 import { toggleFavorite } from "../features/favorites/favoritesSlice";
+import { postComment } from "../features/comments/commentsSlice";
 import { useState } from "react";
 import { Input, Rating } from "react-native-elements";
 
@@ -25,6 +26,7 @@ const CampsiteInfoScreen = ({ route }) => {
 			campsiteId: campsite.id
 		};
 		console.log('New Comment:', newComment);
+		dispatch(postComment(newComment));
         setShowModal(!showModal);
 	};
 
