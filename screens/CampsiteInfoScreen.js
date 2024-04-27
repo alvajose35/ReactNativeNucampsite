@@ -36,7 +36,7 @@ const CampsiteInfoScreen = ({ route }) => {
         setText('');
     };
 
-	renderCommentItem = ({ item }) => {
+	const renderCommentItem = ({ item }) => {
 		return (
 			<View style={styles.commentItem}>
 				<Text style={{ fontSize: 14 }}>{item.text}</Text>
