@@ -4,6 +4,7 @@ import { CheckBox, Input, Button, Icon } from 'react-native-elements';
 import * as SecureStore from 'expo-secure-store';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as ImagePicker from 'expo-image-picker';
+import * as ImageManipulator from 'expo-image-manipulator';
 import { baseUrl } from '../shared/baseUrl';
 import logo from '../assets/images/logo.png';
 
@@ -149,9 +150,26 @@ const RegisterTab = () => {
 			});
 			if (capturedImage.assets) {
 				console.log(capturedImage.assets[0]);
-				setImageUrl(capturedImage.assets[0].uri);
+				// setImageUrl(capturedImage.assets[0].uri);
+				processImage(capturedImage.assets[0].uri);
 			}
 		}
+	};
+
+	const processImage = async (imgUri) => {
+
+		// Manipulate the captured image from camera
+		const processedImage = await ImageManipulator.manipulateAsync (
+			imgUri,
+			[{resize: {width: 400}}],
+			{format: ImageManipulator.SaveFormat.PNG}
+		);
+
+		// Log the processed Image after manipulation
+		console.log(processedImage);
+
+		// Update image state variable
+		setImageUrl(processedImage.uri);
 	};
 
 	return (
