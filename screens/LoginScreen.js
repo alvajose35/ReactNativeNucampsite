@@ -184,7 +184,7 @@ const RegisterTab = () => {
 
 			if (capturedImage.assets) {
 				console.log(capturedImage.assets[0]);
-				processImage(capturedImage.assets[0].uri)
+				processImage(capturedImage.assets[0].uri);
 			}
 		}
 
